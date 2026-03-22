@@ -1,121 +1,24 @@
-'number' + 3 + 3;
-//'number' +3 = 'number3'
-// 'number3' +3 = 'number33'
+function checkProbabilityTheory(count) {
+    let even = 0;
+    let odd = 0;
 
-//'number33'
+    for (let i = 0; i < count; i++) {
+        let number = Math.floor(Math.random() * 901) + 100;
 
-null + 3;
-//null = 0
-//0+3=3
+        if (number % 2 === 0) {
+            even++;
+        } else {
+            odd++;
+        }
+    }
 
-//3
+    let percentEven = (even / count) * 100;
+    let percentOdd = (odd / count) * 100;
 
-5 && "qwerty";
-// && = true (якщо обидві умови true)
-//5 = true
-//qwerty = true
-
-//'qwerty'
-
-+'40' + +'2' + "hillel";
-//+'40' = 40
-//+ '2' = 2
-//40+2= 42
-//42 + "hillel" = '42hillel'
-
-//'42hillel'
-
-'10' - 5 === 6;
-//10-5=5
-//5 === 6 = false
-
-//false
-
-true + false;
-//true = 1
-//false = 0
-//1+0=1
-
-//1
-
-'4px' - 3;
-//Nan - бо 4px не число
-
-//Nan
-
-'4' - 3
-//'4' = 4
-//4-3=1
-
-//1
-
-'6' + 3 ** 0;
-//3 ** 0 = 1
-// '6'+1='61'
-
-//'61'
-
-12 / '6'
-//'6' = 6
-//12 / 6 = 2
-
-//2
-
-'10' + (5 === 6);
-//5 === 6 - false
-//'10' + false = '10false'
-
-//'10false'
-
-null == '';
-//null не дорівнює пустому рядку
-
-//false
-
-3 ** (9 / 3);
-//9 / 3 = 3
-//3 ** 3=27
-
-//27
-
-!!'false' == !!'true';
-//!! = true
-//true == true
-
-//true
-
-0 || '0' && 1;
-//'0' = true
-// true && 1=1
-//0 || 1=1
-
-//1
-
-(+null == false) < 1;
-//+null = 0
-// 0 == falser -> true
-//true = 1
-// 1 < 1 = false
-
-//false
-
-false && true || true;
-//false && true = false
-//false || true = true
-
-//true
-
-false && (false || true);
-//false || true = true
-//false && true = false
-
-//false
-
-(+null == false) < 1 ** 5;
-//+null=0
-//0 == false -> true
-//true = 1
-//1 ** 5 =1
-//1<1 -> false
-
-//false
+    console.log("Кількість згенерованих чисел:", count);
+    console.log("Парних чисел:", even);
+    console.log("Не парних чисел:", odd);
+    console.log("Відсоток парних:", percentEven + "%");
+    console.log("Відсоток не парних:", percentOdd + "%");
+}
+checkProbabilityTheory(10);
