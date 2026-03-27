@@ -1,24 +1,55 @@
-function checkProbabilityTheory(count) {
-    let even = 0;
-    let odd = 0;
+var services = {
+    "стрижка": "60 грн",
+    "гоління": "80 грн",
+    "Миття голови": "100 грн"
+};
 
-    for (let i = 0; i < count; i++) {
-        let number = Math.floor(Math.random() * 901) + 100;
+services["Розбити скло"] = "200 грн";
 
-        if (number % 2 === 0) {
-            even++;
-        } else {
-            odd++;
+services.price = function () {
+    let total = 0;
+
+    for (let key in this) {
+        if (typeof this[key] === "string") {
+            total += parseInt(this[key]);
         }
     }
 
-    let percentEven = (even / count) * 100;
-    let percentOdd = (odd / count) * 100;
+    return total;
+};
 
-    console.log("Кількість згенерованих чисел:", count);
-    console.log("Парних чисел:", even);
-    console.log("Не парних чисел:", odd);
-    console.log("Відсоток парних:", percentEven + "%");
-    console.log("Відсоток не парних:", percentOdd + "%");
-}
-checkProbabilityTheory(10);
+services.minPrice = function () {
+    let min = Infinity;
+
+    for (let key in this) {
+        if (typeof this[key] === "string") {
+            let value = parseInt(this[key]);
+
+            if (value < min) {
+                min = value;
+            }
+        }
+    }
+
+    return min;
+};
+
+services.maxPrice = function () {
+    let max = 0;
+
+    for (let key in this) {
+        if (typeof this[key] === "string") {
+            let value = parseInt(this[key]);
+
+            if (value > max) {
+                max = value;
+            }
+        }
+    }
+
+    return max;
+};
+
+console.log(services.price());    // 440
+console.log(services.minPrice()); // 60
+console.log(services.maxPrice()); // 200
