@@ -1,55 +1,28 @@
-var services = {
-    "стрижка": "60 грн",
-    "гоління": "80 грн",
-    "Миття голови": "100 грн"
-};
-
-services["Розбити скло"] = "200 грн";
-
-services.price = function () {
-    let total = 0;
-
-    for (let key in this) {
-        if (typeof this[key] === "string") {
-            total += parseInt(this[key]);
-        }
+let arr = [
+    {
+        userName: "Test",
+        lastName: "Test",
+        email: "test.test@gmail.com"
+    },
+    {
+        userName: "Dmitro",
+        lastName: "Porohov",
+        email: "dmitro.porohov@yahoo.com"
+    },
+    {
+        userName: "Andrii",
+        lastName: "",
+        email: "andrii@mail.ru"
     }
+];
 
-    return total;
-};
+let validEmails = [];
+let regex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@(gmail\.com|yahoo\.com)$/;
 
-services.minPrice = function () {
-    let min = Infinity;
-
-    for (let key in this) {
-        if (typeof this[key] === "string") {
-            let value = parseInt(this[key]);
-
-            if (value < min) {
-                min = value;
-            }
-        }
+for (let i = 0; i < arr.length; i++) {
+    if (regex.test(arr[i].email)) {
+        validEmails.push(arr[i].email);
     }
+}
 
-    return min;
-};
-
-services.maxPrice = function () {
-    let max = 0;
-
-    for (let key in this) {
-        if (typeof this[key] === "string") {
-            let value = parseInt(this[key]);
-
-            if (value > max) {
-                max = value;
-            }
-        }
-    }
-
-    return max;
-};
-
-console.log(services.price());    // 440
-console.log(services.minPrice()); // 60
-console.log(services.maxPrice()); // 200
+console.log(validEmails);
